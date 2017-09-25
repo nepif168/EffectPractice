@@ -5,7 +5,7 @@ using UniRx;
 
 public class EffectLoader : MonoBehaviour {
 
-    public ReactiveCollection<GameObject> Effects { get; private set; } = new ReactiveCollection<GameObject>();
+    public ReactiveCollection<GameObject> Effects { get; } = new ReactiveCollection<GameObject>();
 
     private void Start()
     {

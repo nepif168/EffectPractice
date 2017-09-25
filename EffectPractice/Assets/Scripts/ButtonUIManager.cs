@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ButtonUIManager : MonoBehaviour
 {
-    public Subject<GameObject> SelectedEffect { get; private set; } = new Subject<GameObject>();
+    public Subject<GameObject> SelectedEffect { get;} = new Subject<GameObject>();
 
     [SerializeField]
     EffectLoader effectLoader;
