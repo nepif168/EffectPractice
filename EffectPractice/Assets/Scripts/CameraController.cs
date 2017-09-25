@@ -36,6 +36,8 @@ public class CameraController : MonoBehaviour {
 
         // カメラの回転
         this.UpdateAsObservable().Where(_ => Input.GetMouseButton(1))
-            .Subscribe(_ => transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0)));
+            .Subscribe(_ => transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"),  0)));
+        this.UpdateAsObservable().Where(_ => Input.GetMouseButton(1))
+    .Subscribe(_ => transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Space.World));
     }
 }

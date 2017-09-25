@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ButtonUIManager : MonoBehaviour
 {
+    public Subject<GameObject> SelectedEffect { get; private set; } = new Subject<GameObject>();
+
     [SerializeField]
     EffectLoader effectLoader;
 
@@ -19,7 +21,9 @@ public class ButtonUIManager : MonoBehaviour
     {
         effectLoader.Effects.ObserveAdd().Subscribe(effect =>
         {
-            Instantiate(effectListButton, content).GetComponentInChildren<Text>().text = effect.Value.name;
+            var button = Instantiate(effectListButton, content) as Button;
+            button.GetComponentInChildren<Text>().text = effect.Value.name;
+            button.OnClickAsObservable().Subscribe(_ => SelectedEffect.OnNext(effect.Value));
         });
     }
 }
