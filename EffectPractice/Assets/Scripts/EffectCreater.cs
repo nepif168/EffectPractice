@@ -17,7 +17,7 @@ public class EffectCreater : MonoBehaviour {
         {
             if (parent.childCount != 0)
                 Destroy(parent.GetChild(0).gameObject);
-            Instantiate(effect, Vector3.zero, Quaternion.identity, parent);
+            Instantiate(effect, effect.transform.position.normalized, effect.transform.rotation, parent);
         });
     }
 
